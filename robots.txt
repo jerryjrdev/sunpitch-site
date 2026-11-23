@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /previews/
+
+Sitemap: https://jerryjrdev.github.io/sunpitch-site/sitemap.xml

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Methodology and accuracy · SunPitch</title>
+<meta name="description" content="How SunPitch measures roof pitch, estimates pitch from the camera, calibrates heading and computes the sun's position, and how close each number gets.">
+<meta name="theme-color" content="#0F0E0C">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="index.html" aria-label="SunPitch home">
+      <img src="icon.svg" alt="" width="34" height="34">
+      <span>SunPitch</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="nav-extra" href="index.html#tools">Tools</a>
+      <a class="nav-wide" href="methodology.html" aria-current="page">Accuracy</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main" class="doc">
+  <div class="wrap">
+    <div class="doc-head">
+      <h1>Methodology and accuracy</h1>
+      <p class="doc-intro">How each number in SunPitch is produced, how close it gets, and what it is not. This page matches Settings, then Methodology &amp; accuracy, in the app.</p>
+    </div>
+
+    <div class="doc-body">
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">On this page</h2>
+        <ol>
+          <li><a href="#glance">Accuracy at a glance</a></li>
+          <li><a href="#surface">Pitch on a surface</a></li>
+          <li><a href="#camera">Camera estimate</a></li>
+          <li><a href="#heading">Heading calibration</a></li>
+          <li><a href="#sun">Sun position</a></li>
+          <li><a href="#roof">Roof numbers</a></li>
+          <li><a href="#estimates">Estimates for planning</a></li>
+        </ol>
+      </nav>
+
+      <div class="prose">
+        <section id="glance" aria-labelledby="glance-title">
+          <h2 id="glance-title">Accuracy at a glance</h2>
+          <div class="acc-card">
+            <table class="acc">
+              <caption class="visually-hidden">Typical accuracy of each SunPitch measurement</caption>
+              <tbody>
+                <tr><th scope="row">Gauge, smooth surface, flip-averaged</th><td>±0.3°</td></tr>
+                <tr><th scope="row">Gauge on shingles</th><td>±1°</td></tr>
+                <tr><th scope="row">Camera estimate</th><td class="wait">After field checks</td></tr>
+                <tr><th scope="row">Heading, sun sight</th><td>≈ ±1°</td></tr>
+                <tr><th scope="row">Heading, eave sight</th><td>≈ ±2–4°</td></tr>
+                <tr><th scope="row">Sun position (NOAA)</th><td>≈ 0.05°</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="surface" aria-labelledby="surface-title">
+          <h2 id="surface-title">Pitch on a surface</h2>
+          <p>SunPitch reads the phone's motion sensors and measures the angle of whatever the phone lies on: a rafter, a straightedge or the roof surface.</p>
+          <p>Hold averages one second of steady readings. Flip-average takes a reading, turns the phone end-for-end on the same spot and averages the two, which cancels the phone's own sensor offset. On a smooth surface a flip-averaged reading is within about ±0.3°.</p>
+          <p>Shingle granules and uneven decking add about ±1°. Lay a level or a straightedge under the phone for the closer figure.</p>
+        </section>
+
+        <section id="camera" aria-labelledby="camera-title">
+          <h2 id="camera-title">Camera estimate</h2>
+          <p>Camera mode estimates pitch from a roof edge seen edge-on, such as a gable rake or the end of a hip roof. SunPitch removes the phone's own tilt using gravity and the camera's lens data, then measures the line you place.</p>
+          <p>Results are always an estimate. The edge must be seen square-on; viewing it at an angle, lens distortion near the frame edges and handle placement all move the result. Accuracy figures will be published after field checks.</p>
+        </section>
+
+        <section id="heading" aria-labelledby="heading-title">
+          <h2 id="heading-title">Heading calibration</h2>
+          <p>Phone compasses drift and swing near metal roofs, racking and vehicles, so SunPitch does not rely on the raw compass for face direction.</p>
+          <p>A sun sight compares where the camera sees the sun with where the sun must be at this time and place: about ±1°. An eave sight lines the camera up with an eave you mark on the map: about ±2–4°, depending on how precisely the eave is marked.</p>
+          <p>The World Magnetic Model (WMM2025) converts compass readings to true north and flags magnetic disturbance. It is a check on the compass, not a replacement for calibration.</p>
+        </section>
+
+        <section id="sun" aria-labelledby="sun-title">
+          <h2 id="sun-title">Sun position</h2>
+          <p>Sun paths use NOAA's solar position equations, based on Jean Meeus's <cite>Astronomical Algorithms</cite>, which place the sun within about 0.05° for present-day dates. A sun path is only as accurate as the heading calibration under it.</p>
+        </section>
+
+        <section id="roof" aria-labelledby="roof-title">
+          <h2 id="roof-title">Roof numbers</h2>
+          <p>Pitch is shown three ways from the same angle θ: rise per 12 of run is 12 × tan θ, percent is 100 × tan θ, and degrees is θ itself. The Gauge snaps the large number to the nearest whole x/12 and always shows the exact value beside it.</p>
+          <ul>
+            <li><strong>Pitch factor</strong> is the sloped length divided by the plan length: 1 ÷ cos θ, or √(1 + (rise ÷ 12)²). A 6/12 roof has a pitch factor of 1.118.</li>
+            <li><strong>Hip/valley factor</strong> is the hip or valley length divided by the common run: √(rise² + 288) ÷ 12. A 6/12 roof has a hip/valley factor of 1.500.</li>
+            <li><strong>Squares</strong> are true roof area divided by 100 sq ft, after the waste allowance you choose.</li>
+          </ul>
+        </section>
+
+        <section id="estimates" aria-labelledby="estimates-title">
+          <h2 id="estimates-title">Estimates for planning</h2>
+          <div class="note">
+            <p>Sun paths, panel angles and camera results are estimates for planning.</p>
+            <p>They are not a production report, a bankable energy figure or a substitute for a professional survey.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <hr class="horizon">
+    <div class="foot-grid">
+      <div class="foot-legal">
+        <a class="brand" href="index.html" aria-label="SunPitch home"><img src="icon.svg" alt="" width="34" height="34"><span>SunPitch</span></a>
+        <p>© 2026 SunPitch. Roof pitch gauge, roofing calculator and sun path for iPhone.</p>
+        <p>Apple, the Apple logo and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="foot-links">
+          <li><a href="support.html">Support</a></li>
+          <li><a href="methodology.html" aria-current="page">Methodology and accuracy</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

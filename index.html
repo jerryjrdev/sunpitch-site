@@ -2,21 +2,345 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SunPitch: Roof Pitch Gauge</title>
-<style>
-  :root { color-scheme: dark; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0F0E0C; color: #F6F4EF;
-         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif; padding: 24px; box-sizing: border-box; }
-  h1 { margin: 0 0 8px; font-size: clamp(28px, 6vw, 44px); }
-  p { margin: 0; color: #B9B4AA; }
-  span { color: #FFB627; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SunPitch: Roof Pitch Gauge, Roofing Calculator and Sun Path for iPhone</title>
+<meta name="description" content="Measure the roof faces and check the shade. A roof pitch gauge, roofing and rafter calculator and calibrated sun-path camera in one iPhone app for roofers, estimators and solar installers.">
+<meta name="theme-color" content="#0F0E0C">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<!-- OWNER: after the App Store record exists, add the Smart App Banner with the numeric Apple ID:
+<meta name="apple-itunes-app" content="app-id=0000000000">
+-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SunPitch">
+<meta property="og:title" content="SunPitch: Roof Pitch Gauge">
+<meta property="og:description" content="Measure the roof faces and check the shade. Pitch, squares, rafters and the sun's path over every roof face, on your iPhone.">
+<meta property="og:image" content="https://jerryjrdev.github.io/sunpitch-site/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<main>
-  <h1>Sun<span>Pitch</span></h1>
-  <p>Roof pitch gauge, roofing calculator and sun path for iPhone. Full site coming soon.</p>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-head">
+    <a class="brand" href="index.html" aria-label="SunPitch home">
+      <img src="icon.svg" alt="" width="34" height="34">
+      <span>SunPitch</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="nav-extra" href="#tools">Tools</a>
+      <a class="nav-wide" href="methodology.html">Accuracy</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main">
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Measure the roof faces and check the shade.</h1>
+        <p class="lede">SunPitch puts a roof pitch gauge, a roofing and rafter calculator and a calibrated sun-path camera in one iPhone app, built for roofers, estimators and solar installers.</p>
+        <div class="get">
+          <!--
+            OWNER: replace this placeholder with Apple's official "Download on the App Store" badge.
+            1. Get the badge from Apple Marketing Tools: https://tools.applemarketingtools.com/app-store-badges
+               (use the black badge for this dark page; do not recolour, crop or redraw it).
+            2. Save it as appstore/site/app-store-badge.svg.
+            3. Replace the whole <a class="store-badge placeholder"> element with:
+               <a class="store-badge" href="https://apps.apple.com/app/id0000000000">
+                 <img src="app-store-badge.svg" alt="Download on the App Store" width="160" height="54">
+               </a>
+               and put the real numeric Apple ID in the link.
+          -->
+          <span class="store-badge placeholder" data-placeholder="app-store-badge">
+            <strong>Coming soon to the App Store</strong>
+            <span>For iPhone · iOS 17 or later</span>
+          </span>
+          <p class="price-line"><b>$13.99 a week or $129.99 a year</b>, each with a 1-week free trial for new subscribers.</p>
+        </div>
+      </div>
+
+      <figure class="instrument" aria-label="Example Gauge reading: 6 in 12, 26.6 degrees, held">
+        <div class="pills" aria-hidden="true">
+          <span class="pill pill-held">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M4.5 7V5.25a3.5 3.5 0 0 1 7 0V7h.25c.69 0 1.25.56 1.25 1.25v5.5c0 .69-.56 1.25-1.25 1.25h-7.5C3.56 15 3 14.44 3 13.75v-5.5C3 7.56 3.56 7 4.25 7h.25Zm1.75 0h3.5V5.25a1.75 1.75 0 0 0-3.5 0V7Z"/></svg>
+            Held
+          </span>
+          <span class="pill pill-info">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4.25" y="1.25" width="7.5" height="13.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.5h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Flat on surface
+          </span>
+          <span class="pill pill-tol">±0.3°</span>
+        </div>
+
+        <div class="reading">
+          <div>
+            <p class="readout"><span class="v">6</span><span class="u">/12</span></p>
+            <div class="held-bar" aria-hidden="true"></div>
+          </div>
+          <div class="reading-side">
+            <span class="deg">26.6°</span>
+            <span class="pct">50.2%</span>
+            <span class="exact">exact 6.02/12</span>
+          </div>
+        </div>
+
+        <div class="dial-row">
+          <svg class="dial" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+            <g transform="translate(22 278) scale(1 -1)"><circle class="q-wedge" r="113" cx="0" cy="0"/></g>
+            <path class="q-frame" d="M22 38V278H262"/>
+            <path class="q-tM" d="M262 278L240 278M253.8 215.9L232.6 221.6M229.8 158L210.8 169M191.7 108.3L176.1 123.9M142 70.2L131 89.2M84.1 46.2L78.4 67.4M22 38L22 60"/>
+            <path class="q-tm5" d="M261.1 257.1L248.1 258.2M258.4 236.3L245.6 238.6M247.5 195.9L235.3 200.4M239.5 176.6L227.7 182.1M218.6 140.3L207.9 147.8M205.9 123.7L195.9 132.1M176.3 94.1L167.9 104.1M159.7 81.4L152.2 92.1M123.4 60.5L117.9 72.3M104.1 52.5L99.6 64.7M63.7 41.6L61.4 54.4M42.9 38.9L41.8 51.9"/>
+            <path class="q-tm" d="M262 273.8L255 273.9M261.9 269.6L254.9 269.9M261.7 265.4L254.7 265.8M261.4 261.3L254.4 261.7M260.7 252.9L253.7 253.6M260.2 248.8L253.3 249.6M259.7 244.6L252.7 245.6M259 240.5L252.1 241.6M257.6 232.2L250.7 233.5M256.8 228.1L249.9 229.6M255.8 224L249 225.6M254.9 219.9L248.1 221.6M252.7 211.8L246 213.8M251.5 207.8L244.8 209.9M250.3 203.8L243.6 206M248.9 199.9L242.3 202.1M246.1 192L239.5 194.5M244.5 188.1L238 190.7M242.9 184.2L236.5 187M241.3 180.4L234.9 183.2M237.7 172.8L231.4 175.9M235.8 169L229.6 172.2M233.9 165.3L227.7 168.6M231.9 161.6L225.8 165M227.7 154.4L221.7 158M225.5 150.8L219.6 154.5M223.3 147.3L217.4 151.1M221 143.8L215.2 147.7M216.2 136.9L210.5 141M213.7 133.6L208.1 137.8M211.1 130.2L205.6 134.6M208.5 127L203.1 131.4M203.1 120.5L197.8 125.1M200.4 117.4L195.2 122.1M197.5 114.3L192.4 119.1M194.6 111.3L189.6 116.1M188.7 105.4L183.9 110.4M185.7 102.5L180.9 107.6M182.6 99.6L177.9 104.8M179.5 96.9L174.9 102.2M173 91.5L168.6 96.9M169.8 88.9L165.4 94.4M166.4 86.3L162.2 91.9M163.1 83.8L159 89.5M156.2 79L152.3 84.8M152.7 76.7L148.9 82.6M149.2 74.5L145.5 80.4M145.6 72.3L142 78.3M138.4 68.1L135 74.2M134.7 66.1L131.4 72.3M131 64.2L127.8 70.4M127.2 62.3L124.1 68.6M119.6 58.7L116.8 65.1M115.8 57.1L113 63.5M111.9 55.5L109.3 62M108 53.9L105.5 60.5M100.1 51.1L97.9 57.7M96.2 49.7L94 56.4M92.2 48.5L90.1 55.2M88.2 47.3L86.2 54M80.1 45.1L78.4 51.9M76 44.2L74.4 51M71.9 43.2L70.4 50.1M67.8 42.4L66.5 49.3M59.5 41L58.4 47.9M55.4 40.3L54.4 47.3M51.2 39.8L50.4 46.7M47.1 39.3L46.4 46.3M38.7 38.6L38.3 45.6M34.6 38.3L34.2 45.3M30.4 38.1L30.1 45.1M26.2 38L26.1 45"/>
+            <g class="q-lab"><text x="272" y="282">0°</text><text x="265" y="216">15°</text><text x="240" y="155">30°</text><text x="199" y="102">45°</text><text x="149" y="61" text-anchor="middle">60°</text><text x="88" y="36" text-anchor="middle">75°</text><text x="22" y="27" text-anchor="middle">90°</text></g>
+            <path class="q-rarc" d="M172 278A150 150 0 0 0 128.1 171.9"/>
+            <path class="q-rise" d="M171.5 265.5L177.5 265M170 253.3L175.9 252.4M167.5 241.6L179.2 238.7M164.3 230.6L170 228.7M160.5 220.3L166 218M156.2 210.9L166.9 205.6M151.6 202.4L156.7 199.4M146.8 194.8L151.8 191.5M142 188L151.6 180.8M137.2 182L141.8 178.1M132.6 176.6L137 172.6M128.1 171.9L136.6 163.4"/>
+            <g class="q-rlab"><text x="154" y="249" text-anchor="end">3</text><text x="144" y="221" text-anchor="end">6</text><text x="131" y="200" text-anchor="end">9</text><text x="118" y="186" text-anchor="end">12</text></g>
+            <g class="q-needle"><line x1="22" y1="278" x2="233" y2="172.2"/><circle cx="233" cy="172.2" r="6.5"/></g>
+            <circle class="q-pivot" cx="22" cy="278" r="8"/>
+            <circle class="q-pivot-in" cx="22" cy="278" r="3"/>
+          </svg>
+          <div class="tiles">
+            <div class="tile"><span class="tile-label">Pitch factor</span><span class="tile-value">1.119</span></div>
+            <div class="tile"><span class="tile-label">Hip/valley</span><span class="tile-value">1.501</span></div>
+          </div>
+        </div>
+        <figcaption>The Gauge, with a reading held on a 6/12 rafter.</figcaption>
+      </figure>
+    </section>
+  </div>
+
+  <div class="wrap"><hr class="horizon"></div>
+
+  <section class="section" id="tools" aria-labelledby="tools-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="tools-title">Pitch, squares and sun for every roof face</h2>
+        <p>Seven tools that share one job. A reading from the Gauge flows into the roof face, the rafter calculator, the takeoff and the report.</p>
+      </div>
+
+      <div class="specs">
+        <article class="spec" aria-labelledby="t-gauge">
+          <p class="spec-fig"><span class="big">6<small>/12</small></span><span class="sub">26.6° · 50.2%</span></p>
+          <div class="spec-body">
+            <h3 id="t-gauge">Roof pitch gauge</h3>
+            <p>Lay your iPhone on a rafter, a straightedge or the roof surface, or stand it on its long edge, and read pitch live in x/12, degrees and percent. Pitch factor and hip/valley factor update with every reading.</p>
+            <ul class="ticks">
+              <li>Hold locks a steady reading, with a haptic and an optional spoken readout, so your eyes stay on your footing.</li>
+              <li>Average takes three readings. Flip-average reads, turns the phone end-for-end and reads again, cancelling case and camera-bump error.</li>
+              <li>Zero sets the offset on a surface you trust to be level.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-camera">
+          <p class="spec-fig estimate"><span class="big"><span class="approx">≈</span>8<small>/12</small></span><span class="sub">33.7°</span><span class="pill pill-estimate">Estimate</span></p>
+          <div class="spec-body">
+            <h3 id="t-camera">Camera pitch estimate</h3>
+            <p>Line up a roof edge seen edge-on in the live camera, such as a gable rake or the end of a hip roof. SunPitch removes the phone's own tilt using gravity and gives a quick pitch estimate. Every camera result is labeled as an estimate.</p>
+            <p>Use it from a safe spot when the phone can't go on the roof.</p>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-roof">
+          <p class="spec-fig"><span class="big">27.1<small> squares</small></span><span class="sub">82 bundles · 10% waste</span></p>
+          <div class="spec-body">
+            <h3 id="t-roof">Roofing calculator and takeoff</h3>
+            <p>Build each roof face from a rectangle, triangle, trapezoid or parallelogram. Enter tape dimensions along the slope, or plan dimensions and let the pitch factor do the rest. SunPitch totals true area, squares, waste and shingle bundles for the whole roof.</p>
+            <ul class="ticks">
+              <li>Line-item takeoff: underlayment, starter, ridge cap, drip edge, ice and water barrier and nails.</li>
+              <li>Material profiles with coverage you can edit to match the wrapper.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-rafter">
+          <p class="spec-fig"><span class="big">15<small> ft </small>0.3<small> in</small></span><span class="sub">Plumb cut 26.6° · seat cut 63.4°</span></p>
+          <div class="spec-body">
+            <h3 id="t-rafter">Rafter calculator</h3>
+            <p>Enter run, pitch and overhang to get rafter length, ridge deduction, and plumb and seat cut angles, with the speed-square rise mark for the plumb cut.</p>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-sun">
+          <p class="spec-fig"><span class="big">±1°</span><span class="sub">Heading by sun sight</span></p>
+          <div class="spec-body">
+            <h3 id="t-sun">Sun path over your roof</h3>
+            <p>Phone compasses read 5–15° off near metal roofs and racking, so SunPitch never relies on the compass alone. Calibrate the heading once:</p>
+            <ul class="ticks">
+              <li>Sun sight: hold the crosshair on the sun for about 2 seconds. About ±1°. Look at the screen, never at the sun.</li>
+              <li>Eave sight: trace the eave on a satellite map, then sight along the real one. About ±2–4°, and it works when the sun is hidden.</li>
+            </ul>
+            <p>Then see the sun's path in the camera for today, both solstices, the equinox or any date, with hour marks. Pick a roof face, and the hours when the sun is behind it are dashed.</p>
+
+            <figure class="sky-fig">
+              <div class="sky">
+                <svg viewBox="0 0 720 380" role="img" aria-labelledby="sky-desc">
+                  <title id="sky-desc">Example sun path view facing south: arcs for June, the equinox, today and December above a roof, with hour marks on today's arc. Afternoon hours are dashed because the sun is behind the east-facing roof face.</title>
+                  <line x1="0" y1="312" x2="720" y2="312" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1"/>
+                  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- casings -->
+                    <g stroke="#000" stroke-opacity="0.7">
+                      <path stroke-width="5.5" d="M-36.3 149.2 L-28.5 142.1 L-20.3 135.1 L-11.7 128 L-2.6 121 L7.1 114.1 L17.5 107.2 L28.7 100.4 L40.9 93.7 L54.2 87.1 L69 80.6 L85.4 74.4 L103.8 68.4 L124.6 62.7 L148.1 57.3 L174.9 52.5 L205.3 48.2 L239.4 44.6 L277.1 41.9 L317.7 40.3 L360 39.7 L402.3 40.3 L442.9 41.9 L480.6 44.6 L514.7 48.2 L545.1 52.5 L571.9 57.3 L595.4 62.7 L616.2 68.4 L634.6 74.4 L651 80.6 L665.8 87.1 L679.1 93.7 L691.3 100.4 L702.5 107.2 L712.9 114.1 L722.6 121 L731.7 128 L740.3 135.1 L748.5 142.1 L756.3 149.2"/>
+                      <path stroke-width="5.5" d="M-39.9 297.8 L-32.8 290.7 L-25.6 283.6 L-18.4 276.6 L-11.1 269.5 L-3.7 262.5 L3.8 255.6 L11.5 248.6 L19.4 241.8 L27.4 235 L35.6 228.2 L44.1 221.6 L52.8 215 L61.9 208.5 L71.2 202.1 L80.9 195.8 L90.9 189.7 L101.4 183.7 L112.3 177.9 L123.6 172.2 L135.5 166.8 L147.9 161.6 L160.9 156.6 L174.4 151.8 L188.6 147.4 L203.4 143.2 L218.8 139.4 L234.8 136 L251.4 132.9 L268.5 130.3 L286.2 128.1 L304.2 126.3 L322.6 125.1 L341.3 124.3 L360 124.1 L378.7 124.3 L397.4 125.1 L415.8 126.3 L433.8 128.1 L451.5 130.3 L468.6 132.9 L485.2 136 L501.2 139.4 L516.6 143.2 L531.4 147.4 L545.6 151.8 L559.1 156.6 L572.1 161.6 L584.5 166.8 L596.4 172.2 L607.7 177.9 L618.6 183.7 L629.1 189.7 L639.1 195.8 L648.8 202.1 L658.1 208.5 L667.2 215 L675.9 221.6"/>
+                      <path stroke-width="5.5" stroke-dasharray="3.75 6.25" d="M675.9 221.6 L684.4 228.2 L692.6 235 L700.6 241.8 L708.5 248.6 L716.2 255.6 L723.7 262.5 L731.1 269.5 L738.4 276.6 L745.6 283.6 L752.8 290.7 L759.9 297.8"/>
+                      <path stroke-width="5.5" d="M86 311.1 L93.2 305.1 L100.5 299.1 L107.9 293.2 L115.5 287.5 L123.3 281.8 L131.3 276.3 L139.4 271 L147.8 265.8 L156.4 260.7 L165.2 255.9 L174.3 251.2 L183.5 246.7 L193 242.3 L202.8 238.2 L212.8 234.4 L223 230.7 L233.4 227.3 L244.1 224.1 L255 221.2 L266.1 218.6 L277.3 216.3 L288.8 214.2 L300.4 212.5 L312.2 211 L324 209.9 L336 209.1 L348 208.6 L360 208.5 L372 208.6 L384 209.1 L396 209.9 L407.8 211 L419.6 212.5 L431.2 214.2 L442.7 216.3 L453.9 218.6 L465 221.2 L475.9 224.1 L486.6 227.3 L497 230.7 L507.2 234.4 L517.2 238.2 L527 242.3 L536.5 246.7"/>
+                      <path stroke-width="5.5" stroke-dasharray="3.75 6.25" d="M536.5 246.7 L545.7 251.2 L554.8 255.9 L563.6 260.7 L572.2 265.8 L580.6 271 L588.7 276.3 L596.7 281.8 L604.5 287.5 L612.1 293.2 L619.5 299.1 L626.8 305.1 L634 311.1"/>
+                      <path stroke-width="7" d="M16.5 309.9 L23.7 303.1 L30.9 296.3 L38.2 289.6 L45.7 283 L53.3 276.4 L61 269.9 L68.9 263.5 L77.1 257.2 L85.4 251 L94 244.9 L102.8 239 L111.8 233.1 L121.2 227.5 L130.8 222 L140.7 216.6 L151 211.4 L161.6 206.5 L172.6 201.7 L183.9 197.2 L195.5 192.9 L207.6 188.9 L220 185.1 L232.7 181.7 L245.8 178.5 L259.3 175.7 L273 173.3 L287.1 171.1 L301.3 169.4 L315.8 168 L330.5 167 L345.2 166.4 L360 166.2 L374.8 166.4 L389.5 167 L404.2 168 L418.7 169.4 L432.9 171.1 L447 173.3 L460.7 175.7 L474.2 178.5 L487.3 181.7 L500 185.1 L512.4 188.9 L524.5 192.9 L536.1 197.2 L547.4 201.7 L558.4 206.5 L569 211.4 L579.3 216.6 L589.2 222 L598.8 227.5"/>
+                      <path stroke-width="7" stroke-dasharray="6 10" d="M598.8 227.5 L608.2 233.1 L617.2 239 L626 244.9 L634.6 251 L642.9 257.2 L651.1 263.5 L659 269.9 L666.7 276.4 L674.3 283 L681.8 289.6 L689.1 296.3 L696.3 303.1 L703.5 309.9"/>
+                    </g>
+                    <!-- June solstice -->
+                    <path stroke="#FF7A5C" stroke-width="2.5" d="M-36.3 149.2 L-28.5 142.1 L-20.3 135.1 L-11.7 128 L-2.6 121 L7.1 114.1 L17.5 107.2 L28.7 100.4 L40.9 93.7 L54.2 87.1 L69 80.6 L85.4 74.4 L103.8 68.4 L124.6 62.7 L148.1 57.3 L174.9 52.5 L205.3 48.2 L239.4 44.6 L277.1 41.9 L317.7 40.3 L360 39.7 L402.3 40.3 L442.9 41.9 L480.6 44.6 L514.7 48.2 L545.1 52.5 L571.9 57.3 L595.4 62.7 L616.2 68.4 L634.6 74.4 L651 80.6 L665.8 87.1 L679.1 93.7 L691.3 100.4 L702.5 107.2 L712.9 114.1 L722.6 121 L731.7 128 L740.3 135.1 L748.5 142.1 L756.3 149.2"/>
+                    <!-- March equinox -->
+                    <path stroke="#FFFFFF" stroke-width="2.5" d="M-39.9 297.8 L-32.8 290.7 L-25.6 283.6 L-18.4 276.6 L-11.1 269.5 L-3.7 262.5 L3.8 255.6 L11.5 248.6 L19.4 241.8 L27.4 235 L35.6 228.2 L44.1 221.6 L52.8 215 L61.9 208.5 L71.2 202.1 L80.9 195.8 L90.9 189.7 L101.4 183.7 L112.3 177.9 L123.6 172.2 L135.5 166.8 L147.9 161.6 L160.9 156.6 L174.4 151.8 L188.6 147.4 L203.4 143.2 L218.8 139.4 L234.8 136 L251.4 132.9 L268.5 130.3 L286.2 128.1 L304.2 126.3 L322.6 125.1 L341.3 124.3 L360 124.1 L378.7 124.3 L397.4 125.1 L415.8 126.3 L433.8 128.1 L451.5 130.3 L468.6 132.9 L485.2 136 L501.2 139.4 L516.6 143.2 L531.4 147.4 L545.6 151.8 L559.1 156.6 L572.1 161.6 L584.5 166.8 L596.4 172.2 L607.7 177.9 L618.6 183.7 L629.1 189.7 L639.1 195.8 L648.8 202.1 L658.1 208.5 L667.2 215 L675.9 221.6"/>
+                    <path stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.6" stroke-dasharray="3.75 6.25" d="M675.9 221.6 L684.4 228.2 L692.6 235 L700.6 241.8 L708.5 248.6 L716.2 255.6 L723.7 262.5 L731.1 269.5 L738.4 276.6 L745.6 283.6 L752.8 290.7 L759.9 297.8"/>
+                    <!-- December solstice -->
+                    <path stroke="#C2E0FF" stroke-width="2.5" d="M86 311.1 L93.2 305.1 L100.5 299.1 L107.9 293.2 L115.5 287.5 L123.3 281.8 L131.3 276.3 L139.4 271 L147.8 265.8 L156.4 260.7 L165.2 255.9 L174.3 251.2 L183.5 246.7 L193 242.3 L202.8 238.2 L212.8 234.4 L223 230.7 L233.4 227.3 L244.1 224.1 L255 221.2 L266.1 218.6 L277.3 216.3 L288.8 214.2 L300.4 212.5 L312.2 211 L324 209.9 L336 209.1 L348 208.6 L360 208.5 L372 208.6 L384 209.1 L396 209.9 L407.8 211 L419.6 212.5 L431.2 214.2 L442.7 216.3 L453.9 218.6 L465 221.2 L475.9 224.1 L486.6 227.3 L497 230.7 L507.2 234.4 L517.2 238.2 L527 242.3 L536.5 246.7"/>
+                    <path stroke="#C2E0FF" stroke-width="2.5" stroke-opacity="0.6" stroke-dasharray="3.75 6.25" d="M536.5 246.7 L545.7 251.2 L554.8 255.9 L563.6 260.7 L572.2 265.8 L580.6 271 L588.7 276.3 L596.7 281.8 L604.5 287.5 L612.1 293.2 L619.5 299.1 L626.8 305.1 L634 311.1"/>
+                    <!-- Today -->
+                    <path stroke="#FFB627" stroke-width="4" d="M16.5 309.9 L23.7 303.1 L30.9 296.3 L38.2 289.6 L45.7 283 L53.3 276.4 L61 269.9 L68.9 263.5 L77.1 257.2 L85.4 251 L94 244.9 L102.8 239 L111.8 233.1 L121.2 227.5 L130.8 222 L140.7 216.6 L151 211.4 L161.6 206.5 L172.6 201.7 L183.9 197.2 L195.5 192.9 L207.6 188.9 L220 185.1 L232.7 181.7 L245.8 178.5 L259.3 175.7 L273 173.3 L287.1 171.1 L301.3 169.4 L315.8 168 L330.5 167 L345.2 166.4 L360 166.2 L374.8 166.4 L389.5 167 L404.2 168 L418.7 169.4 L432.9 171.1 L447 173.3 L460.7 175.7 L474.2 178.5 L487.3 181.7 L500 185.1 L512.4 188.9 L524.5 192.9 L536.1 197.2 L547.4 201.7 L558.4 206.5 L569 211.4 L579.3 216.6 L589.2 222 L598.8 227.5"/>
+                    <path stroke="#FFB627" stroke-width="4" stroke-opacity="0.6" stroke-dasharray="6 10" d="M598.8 227.5 L608.2 233.1 L617.2 239 L626 244.9 L634.6 251 L642.9 257.2 L651.1 263.5 L659 269.9 L666.7 276.4 L674.3 283 L681.8 289.6 L689.1 296.3 L696.3 303.1 L703.5 309.9"/>
+                  </g>
+                  <!-- hour marks on today's arc -->
+                  <g fill="#F6F4EF" stroke="#000" stroke-opacity="0.7" stroke-width="2">
+                    <circle cx="77.1" cy="257.2" r="4"/><circle cx="130.8" cy="222" r="4"/><circle cx="195.5" cy="192.9" r="4"/><circle cx="273" cy="173.3" r="4"/><circle cx="360" cy="166.2" r="4"/><circle cx="447" cy="173.3" r="4"/><circle cx="524.5" cy="192.9" r="4"/><circle cx="589.2" cy="222" r="4"/><circle cx="642.9" cy="257.2" r="4" fill-opacity="0.6"/>
+                  </g>
+                  <g class="hour-lab" fill="#F6F4EF" stroke="#0F0E0C" stroke-width="4" stroke-opacity="0.85" paint-order="stroke" font-size="16" font-weight="650" text-anchor="middle">
+                    <text x="130.8" y="207">9</text><text x="360" y="151">12</text><text x="589.2" y="207">15</text>
+                  </g>
+                  <!-- current sun -->
+                  <circle cx="487.3" cy="181.7" r="9" fill="#FFB627" stroke="#F6F4EF" stroke-width="2.5"/>
+                  <!-- ground and roof, foreground -->
+                  <rect x="0" y="312" width="720" height="68" fill="#0F0E0C"/>
+                  <path d="M-10 380V325L196 268L600 380Z" fill="#24211D"/>
+                  <path d="M-10 325L196 268L600 380" fill="none" stroke="#C4BEB3" stroke-width="2.5" stroke-linejoin="round"/>
+                </svg>
+                <div class="sky-hud" aria-hidden="true">
+                  <span class="pill pill-live">Calibrated · sun sight ±1°</span>
+                  <span class="pill pill-info">Face: East A</span>
+                </div>
+              </div>
+              <figcaption>
+                <ul class="legend">
+                  <li><svg viewBox="0 0 26 8" aria-hidden="true"><path d="M2 4h22" stroke="#FFB627" stroke-width="4" stroke-linecap="round"/></svg>Today</li>
+                  <li><svg viewBox="0 0 26 8" aria-hidden="true"><path d="M2 4h22" stroke="#FF7A5C" stroke-width="2.5" stroke-linecap="round"/></svg>June solstice</li>
+                  <li><svg viewBox="0 0 26 8" aria-hidden="true"><path d="M2 4h22" stroke="#C2E0FF" stroke-width="2.5" stroke-linecap="round"/></svg>December solstice</li>
+                  <li><svg viewBox="0 0 26 8" aria-hidden="true"><path d="M2 4h22" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/></svg>March equinox</li>
+                  <li><svg viewBox="0 0 26 8" aria-hidden="true"><path d="M2 4h22" stroke="#C4BEB3" stroke-width="2.5" stroke-dasharray="3.75 6.25" stroke-linecap="round"/></svg>Sun behind the face</li>
+                </ul>
+                <p class="sky-note">Sun positions are estimates. A sun path is a visual guide for planning, not a production or savings report.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-align">
+          <p class="spec-fig"><span class="big">34.2°</span><span class="sub">Target 35° · facing 181° S</span><span class="pill pill-live">In the green zone</span></p>
+          <div class="spec-body">
+            <h3 id="t-align">Align solar panels</h3>
+            <p>Calibrate near the panel, then set the phone on it. SunPitch reads live tilt and direction against the estimated best clear-sky tilt for your latitude: year-round, for summer or for winter. Or aim a portable panel straight at the sun.</p>
+          </div>
+        </article>
+
+        <article class="spec" aria-labelledby="t-projects">
+          <p class="spec-fig"><span class="big">PDF</span><span class="sub">With your logo and a QR code</span></p>
+          <div class="spec-body">
+            <h3 id="t-projects">Projects and PDF reports</h3>
+            <p>Save each job with its address, roof faces, pitch readings, calibrations and sun-path snapshots. Export a PDF report with your company logo and a page for each face before you leave the job, or share one reading or snapshot as a card.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flush-top" id="accuracy" aria-labelledby="acc-title">
+    <div class="wrap two-col">
+      <div class="section-head">
+        <h2 id="acc-title">How close the numbers get</h2>
+        <p>Every reading shows its tolerance. Camera results and sun paths are always labeled as estimates.</p>
+        <a class="more" href="methodology.html">Read the methodology</a>
+      </div>
+      <table class="acc">
+        <thead><tr><th scope="col">Measurement</th><th scope="col">Typical accuracy</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Gauge on a smooth surface, flip-averaged</th><td>±0.3°</td></tr>
+          <tr><th scope="row">Gauge on shingles</th><td>±1°</td></tr>
+          <tr><th scope="row">Heading, sun sight</th><td>≈ ±1°</td></tr>
+          <tr><th scope="row">Heading, eave sight</th><td>≈ ±2–4°</td></tr>
+          <tr><th scope="row">Sun position (NOAA equations)</th><td>≈ 0.05°</td></tr>
+          <tr><th scope="row">Camera estimate</th><td class="wait">Published after field checks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section flush-top" id="safety" aria-labelledby="safety-title">
+    <div class="wrap">
+      <div class="safety">
+        <div class="safety-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2.5 4 5.6v5.6c0 4.9 3.3 8.9 8 10.3 4.7-1.4 8-5.4 8-10.3V5.6L12 2.5Z" fill="none" stroke="#F6F4EF" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.3 12.1 2.5 2.5 4.9-5" fill="none" stroke="#F6F4EF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h2 id="safety-title">Work safe</h2>
+          <p><strong>Placing the phone on a roof is for trained roofers using fall protection.</strong> Set it down only when you are tied off and stable, and never use SunPitch while walking on a roof.</p>
+          <p>Homeowners: stay off the roof. Use the camera estimate from a safe spot, or measure a rafter in the attic.</p>
+          <p>When sighting the sun, look at the screen, never at the sun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><hr class="horizon"></div>
+
+  <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="pricing-title">SunPitch Pro</h2>
+        <p>SunPitch requires a SunPitch Pro subscription, which unlocks every tool on this page. Both plans start with a 1-week free trial for new subscribers.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <span class="plan-name">Weekly</span>
+          <span class="plan-price">$13.99<small> per week</small></span>
+          <span class="plan-trial">1-week free trial, then $13.99 a week</span>
+        </div>
+        <div class="plan">
+          <span class="plan-name">Yearly</span>
+          <span class="plan-price">$129.99<small> per year</small></span>
+          <span class="plan-trial">1-week free trial, then $129.99 a year</span>
+        </div>
+      </div>
+      <ul class="fine">
+        <li>One free trial per Apple Account. Payment is charged to your Apple Account at confirmation of purchase. If you start the trial, the first payment is charged when the trial ends unless you cancel at least 24 hours before it ends.</li>
+        <li>Your subscription renews automatically at the same price and period unless you cancel at least 24 hours before the end of the current period. Manage or cancel any time in your App Store account settings.</li>
+        <li>Prices shown are in US dollars. The App Store shows the price in your currency before you subscribe. See the <a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy policy</a>.</li>
+      </ul>
+    </div>
+  </section>
 </main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <hr class="horizon">
+    <div class="foot-grid">
+      <div class="foot-legal">
+        <a class="brand" href="index.html" aria-label="SunPitch home"><img src="icon.svg" alt="" width="34" height="34"><span>SunPitch</span></a>
+        <p>© 2026 SunPitch. Roof pitch gauge, roofing calculator and sun path for iPhone.</p>
+        <p>Apple, the Apple logo and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="foot-links">
+          <li><a href="support.html">Support</a></li>
+          <li><a href="methodology.html">Methodology and accuracy</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
